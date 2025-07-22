@@ -1,6 +1,6 @@
 class AppDetallesViajePago extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `
+	connectedCallback() {
+		this.innerHTML = `
             <article class="d-flex flex-column align-items-start justify-content-center w-100 gap-3 p-0">
               <header class="d-flex align-items-center justify-content-start w-100 gap-2">
                 <p class="m-0 p-0">Regresar a</p>
@@ -64,6 +64,10 @@ class AppDetallesViajePago extends HTMLElement {
                   </footer>
                 </article>
               </section>
+              <section>
+                <!-- extras-summary debe estar aquí -->
+                <div id="extras-summary"></div>
+              </section>
               <footer class="row">
                 <label class="suport">Atencion a clientes</label>
                 <a
@@ -75,22 +79,47 @@ class AppDetallesViajePago extends HTMLElement {
               </footer>
             </article>
           `;
-          // logica para el boton de regresar
-          const backButton = this.querySelector('.btn-regresar');
+		// logica para el boton de regresar
+		const backButton = this.querySelector(".btn-regresar");
 
-          // 2. Añadir el event listener
-          if (backButton) {
-            backButton.addEventListener('click', () => {
-              // 3. Disparar un evento personalizado para indicar la navegación
-              this.dispatchEvent(new CustomEvent('navigate-to-select-time', {
-                bubbles: true, // Permite que el evento suba por el árbol DOM
-                composed: true // Permite que el evento cruce los límites del Shadow DOM (si aplica)
-              }));
-              console.log('Evento navigate-to-select-time disparado'); // Para depuración
-            });
-          } else {
-            console.error('Botón .btn-regresar no encontrado en AppDetallesViajePago.');
-          }
-  }
+		// 2. Añadir el event listener
+		if (backButton) {
+			backButton.addEventListener("click", () => {
+				// 3. Disparar un evento personalizado para indicar la navegación
+				this.dispatchEvent(
+					new CustomEvent("navigate-to-payment", {
+						bubbles: true, // Permite que el evento suba por el árbol DOM
+						composed: true, // Permite que el evento cruce los límites del Shadow DOM (si aplica)
+						detail: { extras },
+					})
+				);
+				console.log("Evento navigate-to-payment disparado"); // Para depuración
+			});
+		} else {
+			console.error(
+				"Botón .btn-regresar no encontrado en AppDetallesViajePago."
+			);
+		}
+	}
+
+	setExtras(extras) {
+		const container = this.querySelector("#extras-summary");
+		if (!container) return;
+		if (!extras || extras.length === 0) {
+			container.innerHTML = "";
+			return;
+		}
+		let total = 0;
+		let html = `<h5>Extras agregados:</h5><ul class="list-group mb-2">`;
+		extras.forEach((e) => {
+			const subtotal = e.cantidad * e.precio;
+			total += subtotal;
+			html += `<li class="list-group-item d-flex justify-content-between align-items-center">
+        ${e.nombre} <span>x${e.cantidad} = $${subtotal}</span>
+      </li>`;
+		});
+		html += `</ul><div class="fw-bold">Total extras: $${total}</div>`;
+		container.innerHTML = html;
+	}
 }
 customElements.define("app-detalles-viaje-pago", AppDetallesViajePago);

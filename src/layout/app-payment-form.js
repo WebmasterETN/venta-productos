@@ -1,17 +1,17 @@
 import "../components/app-card-select-ticket.js";
 
 class AppPaymentForm extends HTMLElement {
-    connectedCallback() {
-        this.innerHTML = `
+	connectedCallback() {
+		this.innerHTML = `
             <article class="payment-form">
                 <form id="payment-form" class="needs-validation"  novalidate>
                     <label class="form-label fs-4 fw-semibold text-black text-left">¡Asegura tus asientos!</label>
-
+                    
                     <fieldset class="__direction-trip">
-                        <span class="icon"></span>
-                        <p class="__origin"></p>
-                        <span class="icon"></span>
-                        <p class="__destination"></p>
+                      <span class="icon"></span>
+                      <p class="__origin"></p>
+                      <span class="icon"></span>
+                      <p class="__destination"></p>
                     </fieldset>
                     <fieldset class="__type-ticket row mb-3">
                         <div class="col-sm-4 mb-3 mb-sm-0">
@@ -27,7 +27,11 @@ class AppPaymentForm extends HTMLElement {
                             ></app-card-select-ticket>
                         </div>
                     </fieldset>
-
+                    <!-- aqui van los extras -->
+                    <section>
+                      <!-- extras-summary debe estar aquí para móviles -->
+                      <div id="extras-summary"></div>
+                    </section>
                     <label class="form-label fs-4 fw-semibold text-black text-left">Datos del comprador</label>
 
                     <fieldset class="form-group form-check form-switch align-items-center mb-3">
@@ -76,8 +80,8 @@ class AppPaymentForm extends HTMLElement {
                         <fieldset class="row mb-3">
                           <!-- Nombres -->
                           <div class="col-12 col-xl">
-                            <label for="passengers[0].firstName" class="form-label">Nombre (s) *</label>
-                            <input id="passengers[0].firstName" type="text" name="passengers[0].firstName" placeholder="Nombre (s)" class="form-control form-control-lg" value="">
+                            <label for="payment-passengers-0-firstName" class="form-label">Nombre (s) *</label>
+                            <input id="payment-passengers-0-firstName" type="text" name="passengers[0].firstName" placeholder="Nombre (s)" class="form-control form-control-lg" value="">
                             <div class="valid-feedback">
                                 Porfavor ingrese su nombre!
                             </div>
@@ -85,15 +89,15 @@ class AppPaymentForm extends HTMLElement {
                           <!-- Apellido Paterno -->
                           <div class="col-12 col-xl">
                             <div class="field-renderer">
-                              <label for="passengers[0].lastName" class="form-label">Apellido Paterno *</label>
-                              <input id="passengers[0].lastName" type="text" name="passengers[0].lastName" placeholder="Apellido Paterno" class="form-control form-control-lg" value="">
+                              <label for="payment-passengers-0-lastName" class="form-label">Apellido Paterno *</label>
+                              <input id="payment-passengers-0-lastName" type="text" name="passengers[0].lastName" placeholder="Apellido Paterno" class="form-control form-control-lg" value="">
                             </div>
                           </div>
                           <!-- Apellido Materno (mitad del ancho) -->
                           <div class="col-12 col-xl">
                             <div class="field-renderer">
-                              <label for="passengers[0].secondLastName" class="form-label">Apellido Materno</label>
-                              <input id="passengers[0].secondLastName" type="text" name="passengers[0].secondLastName" placeholder="Apellido Materno (opcional)" class="form-control form-control-lg" value="">
+                              <label for="payment-passengers-0-secondLastName" class="form-label">Apellido Materno</label>
+                              <input id="payment-passengers-0-secondLastName" type="text" name="passengers[0].secondLastName" placeholder="Apellido Materno (opcional)" class="form-control form-control-lg" value="">
                             </div>
                           </div>
                         </fieldset>
@@ -422,17 +426,36 @@ class AppPaymentForm extends HTMLElement {
                 </form>
             </article>
         `;
-        // Bloquear letras en el campo de número de tarjeta
-        const numTarget = this.querySelector("#num-target");
-        numTarget.addEventListener("input", (e) => {
-            e.target.value = e.target.value.replace(/\D/g, ""); // Permitir solo números
-        });
+		// Bloquear letras en el campo de número de tarjeta
+		const numTarget = this.querySelector("#num-target");
+		numTarget.addEventListener("input", (e) => {
+			e.target.value = e.target.value.replace(/\D/g, ""); // Permitir solo números
+		});
 
-        // Bloquear letras en el campo de CVV
-        const cvv = this.querySelector("#cvv");
-        cvv.addEventListener("input", (e) => {
-            e.target.value = e.target.value.replace(/\D/g, ""); // Permitir solo números
+		// Bloquear letras en el campo de CVV
+		const cvv = this.querySelector("#cvv");
+		cvv.addEventListener("input", (e) => {
+			e.target.value = e.target.value.replace(/\D/g, ""); // Permitir solo números
+		});
+	}
+    setExtras(extras) {
+        const container = this.querySelector("#extras-summary");
+        if (!container) return;
+        if (!extras || extras.length === 0) {
+            container.innerHTML = "";
+            return;
+        }
+        let total = 0;
+        let html = `<h5>Extras agregados:</h5><ul class="list-group mb-2">`;
+        extras.forEach((e) => {
+            const subtotal = e.cantidad * e.precio;
+            total += subtotal;
+            html += `<li class="list-group-item d-flex justify-content-between align-items-center">
+                ${e.nombre} <span>x${e.cantidad} = $${subtotal}</span>
+            </li>`;
         });
+        html += `</ul><div class="fw-bold">Total extras: $${total}</div>`;
+        container.innerHTML = html;
     }
 }
 customElements.define("app-payment-form", AppPaymentForm);

@@ -1,11 +1,11 @@
 import "../components/app-card-select-ticket.js";
 
 class AppPassangersForm extends HTMLElement {
-  connectedCallback() {
-    // Bind the event handler method to the instance
-    this._handleContinueClick = this.handleContinueClick.bind(this);
+	connectedCallback() {
+		// Bind the event handler method to the instance
+		this._handleContinueClick = this.handleContinueClick.bind(this);
 
-    this.innerHTML = `
+		this.innerHTML = `
             <article class="d-flex flex-column w-100">
 
                 <div class="row">
@@ -52,24 +52,22 @@ class AppPassangersForm extends HTMLElement {
                             <div class="field-renderer ">
                               <div>
                                 <div class="css-1ildg7g">
-                                  <div class="css-bjn8wh"><input id="passengers[0].firstName" type="text"
-                                      name="passengers[0].firstName" placeholder="Nombre (s)" class="css-za6xmu" value=""></div><label
-                                    for="passengers[0].firstName" class="css-1habs1z">Nombre (s)</label>
+                                  <div class="css-bjn8wh">
+                                    <input id="passengers-0-firstName" type="text" placeholder="Nombre (s)" class="css-za6xmu" value=""></div><label
+                                    for="passengers-0-firstName" class="css-1habs1z">Nombre (s)</label>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="row mb-3">
-
                           <!-- Apellido Paterno -->
                           <div class="col-12 col-xl">
                             <div class="field-renderer ">
                               <div>
                                 <div class="css-1ildg7g">
-                                  <div class="css-bjn8wh"><input id="passengers[0].lastName" type="text" name="passengers[0].lastName"
+                                  <div class="css-bjn8wh">
+                                    <input id="passengers-0-lastName" type="text"
                                       placeholder="Apellido Paterno" class="css-za6xmu" value=""></div><label
-                                    for="passengers[0].lastName" class="css-1habs1z">Apellido Paterno</label>
+                                    for="passengers-0-lastName" class="css-1habs1z">Apellido Paterno</label>
                                 </div>
                               </div>
                             </div>
@@ -80,9 +78,11 @@ class AppPassangersForm extends HTMLElement {
                             <div class="field-renderer ">
                               <div>
                                 <div class="css-1ildg7g">
-                                  <div class="css-bjn8wh"><input id="passengers[0].secondLastName" type="text"
-                                      name="passengers[0].secondLastName" placeholder="Apellido Materno" class="css-za6xmu" value="">
-                                  </div><label for="passengers[0].secondLastName" class="css-1habs1z">Apellido Materno</label>
+                                  <div class="css-bjn8wh">
+                                    <input id="passengers-0-secondLastName" type="text"
+                                       placeholder="Apellido Materno" class="css-za6xmu" value="">
+                                  </div>
+                                  <label for="passengers-0-secondLastName" class="css-1habs1z">Apellido Materno</label>
                                 </div>
                               </div>
                             </div>
@@ -94,9 +94,9 @@ class AppPassangersForm extends HTMLElement {
                             <div class="field-renderer ">
                               <div>
                                 <div class="css-1ildg7g">
-                                  <div class="css-bjn8wh"><input id="passengers[0].email" type="text" name="passengers[0].email"
+                                  <div class="css-bjn8wh"><input id="passengers-0-email" type="text" name="passengers[0].email"
                                       placeholder="Correo electrónico" class="css-za6xmu" value=""></div><label
-                                    for="passengers[0].email" class="css-1habs1z">Correo electrónico</label>
+                                    for="passengers-0-email" class="css-1habs1z">Correo electrónico</label>
                                 </div>
                               </div>
                             </div>
@@ -182,8 +182,55 @@ class AppPassangersForm extends HTMLElement {
                             Los pasajeros menores de edad deben viajar en compañía de 1 adulto
                           </p>
                         </div>
-                        <p>
-                        </p>
+                        <!-- Menú de selección de extras -->
+                        <div class="container mt-4 mb-4">
+                          <h4 class="subtitulo__pages mb-3">Agrega extras a tu viaje</h4>
+                          <div class="row g-3">
+                            <!-- Agua -->
+                            <div class="col-12 col-md-4">
+                              <div class="card p-3 h-100">
+                                <div class="d-flex justify-content-between align-items-center">
+                                  <span>Agua</span>
+                                  <span class="badge bg-primary">$15</span>
+                                </div>
+                                <div class="d-flex justify-content-center align-items-center mt-2">
+                                  <button type="button" class="btn btn-outline-secondary btn-sm" id="agua-minus">-</button>
+                                  <span id="agua-count" class="mx-2">0</span>
+                                  <button type="button" class="btn btn-outline-secondary btn-sm" id="agua-plus">+</button>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Refresco -->
+                            <div class="col-12 col-md-4">
+                              <div class="card p-3 h-100">
+                                <div class="d-flex justify-content-between align-items-center">
+                                  <span>Refresco</span>
+                                  <span class="badge bg-primary">$20</span>
+                                </div>
+                                <div class="d-flex justify-content-center align-items-center mt-2">
+                                  <button type="button" class="btn btn-outline-secondary btn-sm" id="refresco-minus">-</button>
+                                  <span id="refresco-count" class="mx-2">0</span>
+                                  <button type="button" class="btn btn-outline-secondary btn-sm" id="refresco-plus">+</button>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Subway -->
+                            <div class="col-12 col-md-4">
+                              <div class="card p-3 h-100">
+                                <div class="d-flex justify-content-between align-items-center">
+                                  <span>Subway</span>
+                                  <span class="badge bg-primary">$60</span>
+                                </div>
+                                <div class="d-flex justify-content-center align-items-center mt-2">
+                                  <button type="button" class="btn btn-outline-secondary btn-sm" id="subway-minus">-</button>
+                                  <span id="subway-count" class="mx-2">0</span>
+                                  <button type="button" class="btn btn-outline-secondary btn-sm" id="subway-plus">+</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Terminos y condiciones -->
                         <div class="btn-group__terminos__condiciones">
                           <div class="row">
                             <h3 class="subtitulo__pages d-flex align-items-center gap-2">
@@ -212,47 +259,116 @@ class AppPassangersForm extends HTMLElement {
                 </div>
             </article>
                 `;
-    // Add event listener after rendering
-    this.addEventListeners();
-  }
+		// Add event listener after rendering
+		this.addEventListeners();
+	}
 
-  disconnectedCallback() {
-    this.removeEventListeners();
-  }
+	disconnectedCallback() {
+		this.removeEventListeners();
+	}
 
-  addEventListeners() {
-    const continueButton = this.querySelector("#continue-to-payment-btn");
-    if (continueButton) {
-      continueButton.addEventListener("click", this._handleContinueClick);
-    } else {
-      console.error("#continue-to-payment-btn not found in app-passengers-form.");
-    }
-  }
+	addEventListeners() {
+		const continueButton = this.querySelector("#continue-to-payment-btn");
+		if (continueButton) {
+			continueButton.addEventListener("click", this._handleContinueClick);
+		} else {
+			console.error(
+				"#continue-to-payment-btn not found in app-passengers-form."
+			);
+		}
 
-  removeEventListeners() {
-    const continueButton = this.querySelector("#continue-to-payment-btn");
-    if (continueButton) {
-      continueButton.removeEventListener("click", this._handleContinueClick);
-    }
-  }
+		// Extras: Agua
+		const aguaMinus = this.querySelector("#agua-minus");
+		const aguaPlus = this.querySelector("#agua-plus");
+		const aguaCount = this.querySelector("#agua-count");
+		let aguaValue = 0;
+		if (aguaMinus && aguaPlus && aguaCount) {
+			aguaMinus.addEventListener("click", () => {
+				if (aguaValue > 0) aguaValue--;
+				aguaCount.textContent = aguaValue;
+			});
+			aguaPlus.addEventListener("click", () => {
+				aguaValue++;
+				aguaCount.textContent = aguaValue;
+			});
+		}
 
-  handleContinueClick() {
-    // --- INICIO: Validación (Ejemplo simple) ---
-    // Deberías implementar una validación más robusta según tus necesidades
-    const firstNameInput = this.querySelector('#passengers\\[0\\]\\.firstName'); // Escapar caracteres especiales para querySelector
-    const lastNameInput = this.querySelector('#passengers\\[0\\]\\.lastName');
-    const emailInput = this.querySelector('#passengers\\[0\\]\\.email');
+		// Extras: Refresco
+		const refrescoMinus = this.querySelector("#refresco-minus");
+		const refrescoPlus = this.querySelector("#refresco-plus");
+		const refrescoCount = this.querySelector("#refresco-count");
+		let refrescoValue = 0;
+		if (refrescoMinus && refrescoPlus && refrescoCount) {
+			refrescoMinus.addEventListener("click", () => {
+				if (refrescoValue > 0) refrescoValue--;
+				refrescoCount.textContent = refrescoValue;
+			});
+			refrescoPlus.addEventListener("click", () => {
+				refrescoValue++;
+				refrescoCount.textContent = refrescoValue;
+			});
+		}
 
-    if (!firstNameInput?.value || !lastNameInput?.value || !emailInput?.value) {
-        alert("Por favor, completa todos los campos obligatorios del pasajero.");
-        // Aquí podrías añadir lógica para resaltar los campos inválidos
-        return; // Detiene la ejecución si la validación falla
-    }
-    // --- FIN: Validación ---
+		// Extras: Subway
+		const subwayMinus = this.querySelector("#subway-minus");
+		const subwayPlus = this.querySelector("#subway-plus");
+		const subwayCount = this.querySelector("#subway-count");
+		let subwayValue = 0;
+		if (subwayMinus && subwayPlus && subwayCount) {
+			subwayMinus.addEventListener("click", () => {
+				if (subwayValue > 0) subwayValue--;
+				subwayCount.textContent = subwayValue;
+			});
+			subwayPlus.addEventListener("click", () => {
+				subwayValue++;
+				subwayCount.textContent = subwayValue;
+			});
+		}
+	}
 
-    console.log("Passenger form validation passed (basic check). Navigating to payment.");
-    // Si la validación pasa, dispara el evento
-    this.dispatchEvent(new CustomEvent('navigate-to-payment', { bubbles: true, composed: true }));
-  }
+	removeEventListeners() {
+		const continueButton = this.querySelector("#continue-to-payment-btn");
+		if (continueButton) {
+			continueButton.removeEventListener("click", this._handleContinueClick);
+		}
+	}
+
+	handleContinueClick(e) {
+		if (e) e.preventDefault();
+		// --- INICIO: Validación (Ejemplo simple) ---
+		// Deberías implementar una validación más robusta según tus necesidades
+		const firstNameInput = this.querySelector("#passengers-0-firstName");
+		const lastNameInput = this.querySelector("#passengers-0-lastName");
+		const emailInput = this.querySelector("#passengers-0-email");
+
+		if (!firstNameInput?.value || !lastNameInput?.value || !emailInput?.value) {
+			alert("Por favor, completa todos los campos obligatorios del pasajero.");
+			// Aquí podrías añadir lógica para resaltar los campos inválidos
+			return; // Detiene la ejecución si la validación falla
+		}
+		// --- FIN: Validación ---
+
+		// Obtén los valores de los extras
+		const aguaCount =
+			parseInt(this.querySelector("#agua-count").textContent, 10) || 0;
+		const refrescoCount =
+			parseInt(this.querySelector("#refresco-count").textContent, 10) || 0;
+		const subwayCount =
+			parseInt(this.querySelector("#subway-count").textContent, 10) || 0;
+		const precios = { agua: 15, refresco: 20, subway: 60 };
+		const extras = [
+			{ nombre: "Agua", cantidad: aguaCount, precio: precios.agua },
+			{ nombre: "Refresco", cantidad: refrescoCount, precio: precios.refresco },
+			{ nombre: "Subway", cantidad: subwayCount, precio: precios.subway },
+		].filter((e) => e.cantidad > 0);
+
+		this.dispatchEvent(
+			new CustomEvent("navigate-to-payment", {
+				bubbles: true,
+				composed: true,
+				detail: { extras },
+			})
+		);
+	}
 }
 customElements.define("app-passangers-form", AppPassangersForm);

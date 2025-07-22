@@ -3,15 +3,12 @@
 import "../components/app-header-venta-boletos.js";
 import "../components/app-footer-venta-boletos.js";
 import "../components/app-filters.js";
-import "../components/app-login.js";
 
 /*-------- Import layuts components ----------*/
 
-import "./layout-login.js";
 
 import "./layout-select-time.js";
 
-import "./layout-select-viaje.js";
 
 //importar componentes layout
 import "../components/app-times-trip.js";
@@ -35,5 +32,4 @@ import "../components/app-change-password.js";
 import "../js/dynamic-tabs.js";
 import "../js/bootstrap.bundle.min.js";
 import "../js/header.js";
-import "../js/login-handler.js";
 import "../js/modalCodePromo.js";
