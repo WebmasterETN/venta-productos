@@ -30,7 +30,7 @@ class AppPaymentForm extends HTMLElement {
                     <!-- aqui van los extras -->
                     <section>
                       <!-- extras-summary debe estar aquí para móviles -->
-                      <div id="extras-summary"></div>
+                      <div id="extras-summary-2"></div>
                     </section>
                     <label class="form-label fs-4 fw-semibold text-black text-left">Datos del comprador</label>
 
@@ -439,7 +439,7 @@ class AppPaymentForm extends HTMLElement {
 		});
 	}
     setExtras(extras) {
-        const container = this.querySelector("#extras-summary");
+        const container = this.querySelector("#extras-summary-2");
         if (!container) return;
         if (!extras || extras.length === 0) {
             container.innerHTML = "";
