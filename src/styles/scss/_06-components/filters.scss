@@ -1,0 +1,26 @@
+@import "../_01-settings/variables";
+
+.__filter {
+    .__filter__title {
+        font-size: clamp(0.875em, 2vw, 1.125em);
+    }
+    .__filter__input-group {
+        & .__filter__button-filter{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1.4px solid $primary-color;
+            color: $primary-color;
+            & .__filter__icon-filter {
+                font-size: 1.5em;
+                color: #fff;
+                background-color: $primary-color;
+                padding: 5px;
+            }
+            & .__filter__input-group__count {
+                background-color: $primary-color;
+                color: #fff;
+            }
+        }
+    }
+}

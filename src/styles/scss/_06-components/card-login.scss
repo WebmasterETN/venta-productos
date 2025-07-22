@@ -1,0 +1,20 @@
+@import '../_01-settings/variables';
+@import '../_02-tools/mixin';
+
+.__login-card {
+    max-width: 600px; /* Ajusta el tamaño máximo */
+    width: 100%;
+    max-height: 400px;
+    height: 100%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    right: -15%;
+    transform: translate(-50%, -50%);
+    @include media("lg") {
+        position: relative;
+        top: 0;
+        right: 0;
+        transform: none;
+    }
+}
