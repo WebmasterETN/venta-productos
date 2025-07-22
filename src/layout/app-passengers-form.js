@@ -45,7 +45,7 @@ class AppPassangersForm extends HTMLElement {
                         </div>
                       </div>
 
-                      <form>
+                      <form id="passenger-form" class="needs-validation"  novalidate>
                         <div class="row mb-3">
                           <!-- Nombres -->
                           <div class="col-12 col-xl">
