@@ -692,3 +692,13 @@ $font-primary: 'Open Sans', sans-serif;
     position: relative;
     top: 0;
 }
+
+.extras-container .card {
+  border: 1.5px solid #000000; /* Un borde más oscuro y notorio */
+}
+
+.extras-container .extra-icon {
+  width: 55px;
+  height: 55px;
+  object-fit: contain; /* Asegura que la imagen se ajuste sin distorsionarse */
+}

@@ -183,7 +183,7 @@ class AppPassangersForm extends HTMLElement {
                           </p>
                         </div>
                         <!-- Menú de selección de extras -->
-                        <div class="container mt-4 mb-4">
+                        <div class="container mt-4 mb-4 extras-container">
                           <h4 class="subtitulo__pages mb-3">Agrega extras a tu viaje</h4>
                           <div class="row g-3">
                             <!-- Agua -->
@@ -191,6 +191,7 @@ class AppPassangersForm extends HTMLElement {
                               <div class="card p-3 h-100">
                                 <div class="d-flex justify-content-between align-items-center">
                                   <span>Agua</span>
+                                  <img src="src/assets/icons/icons-img/icons/water.webp" alt="Agua" class="extra-icon img-fluid">
                                   <span class="badge bg-primary">$15</span>
                                 </div>
                                 <div class="d-flex justify-content-center align-items-center mt-2">
@@ -205,6 +206,7 @@ class AppPassangersForm extends HTMLElement {
                               <div class="card p-3 h-100">
                                 <div class="d-flex justify-content-between align-items-center">
                                   <span>Refresco</span>
+                                  <img src="src/assets/icons/icons-img/icons/refresh.webp" alt="Refresco" class="extra-icon img-fluid">
                                   <span class="badge bg-primary">$20</span>
                                 </div>
                                 <div class="d-flex justify-content-center align-items-center mt-2">
@@ -219,6 +221,7 @@ class AppPassangersForm extends HTMLElement {
                               <div class="card p-3 h-100">
                                 <div class="d-flex justify-content-between align-items-center">
                                   <span>Subway</span>
+                                  <img src="src/assets/icons/icons-img/icons/subway.webp" alt="Subway" class="extra-icon img-fluid">
                                   <span class="badge bg-primary">$60</span>
                                 </div>
                                 <div class="d-flex justify-content-center align-items-center mt-2">
