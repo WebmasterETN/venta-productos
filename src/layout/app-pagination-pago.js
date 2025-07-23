@@ -136,6 +136,11 @@ class AppPaginationPago extends HTMLElement {
 	}
 
 	handleNavigateToPassengers(event) {
+		// Detenemos la propagación para que este evento no sea capturado por
+		// otros listeners de más alto nivel (como el de dynamic-tabs.js)
+		// que podrían recargar toda la vista.
+		event.stopPropagation();
+
 		console.log(
 			"navigate-to-passengers event caught by app-pagination-pago",
 			event.detail
@@ -156,6 +161,11 @@ class AppPaginationPago extends HTMLElement {
 	}
 
 	handleNavigateToPayment(event) {
+		// Detenemos la propagación para que este evento no sea capturado por
+		// otros listeners de más alto nivel (como el de dynamic-tabs.js)
+		// que podrían recargar toda la vista.
+		event.stopPropagation();
+
 		const paymentTabLink = this.querySelector("#payment-tab");
 		if (paymentTabLink && typeof bootstrap !== "undefined" && bootstrap.Tab) {
 			const tabInstance = bootstrap.Tab.getOrCreateInstance(paymentTabLink);
