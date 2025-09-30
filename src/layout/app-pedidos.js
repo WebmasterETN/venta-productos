@@ -1,27 +1,6 @@
 class LayoutPedidos extends HTMLElement {
 	connectedCallback() {
 		this.innerHTML = `
-      <style>
-        .card-container {
-          width: 100%;
-          max-height: 70vh;
-        }
-        .table-container-scroll {
-          max-height: 60vh; /* Puedes ajustar esta altura según tus necesidades */
-          overflow-y: auto;
-        }
-        .table-container-scroll thead {
-          position: sticky; /* Fija el encabezado de la tabla */
-          top: 0;
-          z-index: 1; /* Asegura que el encabezado esté por encima del cuerpo */
-        }
-        @media (max-width: 750px) {
-          .table-responsive {
-            min-width: 898px;
-            overflow-x: auto; /* Activa el scroll horizontal */
-          }
-        }
-      </style>
       <div class="container-fluid pb-5">
         <div class="card shadow-lg card-container">
           <header class="card-header d-flex justify-content-between align-items-center">
