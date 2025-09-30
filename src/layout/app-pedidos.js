@@ -1,16 +1,16 @@
 class LayoutPedidos extends HTMLElement {
 	connectedCallback() {
 		this.innerHTML = `
-      <div class="container-fluid pb-5">
+      <div class="container pb-5">
         <div class="card shadow-lg card-container">
-          <header class="card-header d-flex justify-content-between align-items-center">
+          <header class="card-header d-flex justify-content-between align-items-center px-3">
               <h2 class="card-title mb-0">Registro de Entregas</h2>
               <button type="button" class="btn btn-secondary" onclick="window.location.href = '../../admin';">Volver</button>
           </header>
-          <main class="card-body mt-0">
-            <div class="table-responsive table-container-scroll">
-              <table class="table table-striped table-hover align-middle">
-                <thead class="table-dark"> 
+          <main class="card-body mt-0 px-0">
+            <div class="table-wrapper">
+              <table class="table table-striped table-hover align-middle overflow-auto table-container-scroll">
+                <thead class="table-dark "> 
                   <!-- El thead se quedará fijo en la parte superior gracias a position: sticky -->
                   <tr class="text-center">
                     <th># Operación</th>
@@ -23,7 +23,7 @@ class LayoutPedidos extends HTMLElement {
                     <th>Entrega</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody class="body-table mt-5">
                   <!-- Fila de ejemplo 1 -->
                   <tr>
                     <td>12345</td>
@@ -128,40 +128,6 @@ class LayoutPedidos extends HTMLElement {
                     <td>F-9881</td>
                     <td>
                       <button class="btn btn-sm btn-success entrega-btn" data-status="entregado" disabled>Entregado</button>
-                    </td>
-                  </tr>
-                  <!-- Fila de ejemplo 7 -->
-                  <tr>
-                    <td>12351</td>
-                    <td>2024-08-21</td>
-                    <td>Pedro Martinez</td>
-                    <td>4</td>
-                    <td>
-                      <ul class="list-unstyled mb-0">
-                        <li>- Producto 1 (Agua)</li>
-                      </ul>
-                    </td>
-                    <td><span class="badge bg-warning text-dark">Por surtir</span></td>
-                    <td>F-9882</td>
-                    <td>
-                      <button class="btn btn-sm btn-outline-secondary entrega-btn" data-status="pendiente">Pendiente</button>
-                    </td>
-                  </tr>
-                  <!-- Fila de ejemplo 7 -->
-                  <tr>
-                    <td>12351</td>
-                    <td>2024-08-21</td>
-                    <td>Pedro Martinez</td>
-                    <td>4</td>
-                    <td>
-                      <ul class="list-unstyled mb-0">
-                        <li>- Producto 1 (Agua)</li>
-                      </ul>
-                    </td>
-                    <td><span class="badge bg-warning text-dark">Por surtir</span></td>
-                    <td>F-9882</td>
-                    <td>
-                      <button class="btn btn-sm btn-outline-secondary entrega-btn" data-status="pendiente">Pendiente</button>
                     </td>
                   </tr>
                   <!-- Fila de ejemplo 7 -->

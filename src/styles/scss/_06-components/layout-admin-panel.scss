@@ -1,29 +1,32 @@
 @import "../_01-settings/variables";
 @import "../_02-tools/mixin";
 
-.card-container {
-  width: 100%;
-  max-height: 70vh;
-}
-
-.table-container-scroll {
+/* Este es el contenedor que hará todo el trabajo */
+.table-wrapper {
   max-height: 60vh;
-  /* Puedes ajustar esta altura según tus necesidades */
+  /* Define una altura máxima para el scroll vertical */
   overflow-y: auto;
+  /* Activa el scroll VERTICAL cuando el contenido es muy alto */
+  overflow-x: auto;
+  /* Activa el scroll HORIZONTAL siempre (o cuando sea necesario) */
 }
 
-.table-container-scroll thead {
+/* El encabezado se pega al borde superior DEL CONTENEDOR .table-wrapper */
+.table-wrapper thead {
   position: sticky;
-  /* Fija el encabezado de la tabla */
   top: 0;
   z-index: 1;
-  /* Asegura que el encabezado esté por encima del cuerpo */
+  /* Asegura que se vea por encima del cuerpo de la tabla */
 }
 
+.card-container {
+  width: 100%;
+  /* La altura se controla ahora en el wrapper de la tabla */
+}
+
+/* Forzar ancho de la tabla en pantallas chicas */
 @media (max-width: 750px) {
-  .table-responsive {
-    min-width: 898px;
-    overflow-x: auto;
-    /* Activa el scroll horizontal */
+  .table-wrapper>.table {
+    min-width: 900px;
   }
 }
