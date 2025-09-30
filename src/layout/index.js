@@ -6,7 +6,8 @@ import "../components/app-filters.js";
 
 /*-------- Import layuts components ----------*/
 
-
+import "./app-login.js";
+import "./app-pedidos.js";
 import "./layout-select-time.js";
 
 
