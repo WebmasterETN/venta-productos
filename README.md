@@ -30,7 +30,7 @@ Esta es una aplicación web diseñada para brindar a los usuarios de agencias un
 - [Uso de Módulos JavaScript](#uso-de-módulos-javascript)
   - [Módulo Header (`header.js`)](#módulo-header-headerjs)
   - [Módulo Principal (`main.js`)](#módulo-principal-mainjs)
-  - [Módulo de Inicio de Sesión (`login-handler.js`)](#módulo-de-inicio-de-sesión-login-handlerjs)
+  - [Módulo de Inicio de Sesión (`app-login.js`)](#módulo-de-inicio-de-sesión-app-loginjs)
 - [Contribuciones](#contribuciones)
 - [Licencia](#licencia)
 
@@ -139,12 +139,14 @@ El código JS se divide en módulos para mayor organización.
 - **Funciones:**
   - Punto central para agregar funcionalidades globales.
 
-### Módulo de Inicio de Sesión (`login-handler.js`)
+### Módulo de Inicio de Sesión (`app-login.js`)
 
 - **Propósito:** Control del login persistente.
 - **Uso:**
   - Importar en `index.js`.
-  - Eliminar `testCredentials` en producción.
+  - User & password test:
+    - username: testuser
+    - password: testpassword.
 
 ## Contribuciones
 
@@ -192,7 +194,7 @@ This is a web application designed to provide agency users with quick and easy a
 - [JavaScript Modules Usage](#javascript-modules-usage)
   - [Header Module (`header.js`)](#header-module-headerjs)
   - [Main Module (`main.js`)](#main-module-mainjs)
-  - [Main Module (`login-handler.js`)](#main-module-login-handlerjs)
+  - [Main Module (`app-login.js`)](#main-module-app-loginjs)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -340,7 +342,7 @@ The project uses a component-based approach for building the UI. Here's how to w
   - All JavaScript modules should be imported and initialized in `main.js`.
   - You can add new modules and functionality by creating new `.js` files and importing them into `main.js`.
 
-### Main Module (`login-handler.js`)
+### Main Module (`app-login.js`)
 
 - **Purpose:** The entry point for the JavaScript code.
 - **Functionality:**
@@ -348,7 +350,6 @@ The project uses a component-based approach for building the UI. Here's how to w
   - Keeps the login open for the user when they refresh the page.
 - **Usage:**
   - Import in file `index.js`.
-  - For production remove `testCredentials` function.
   - Test credentials: 
     - username: testuser
     - password: testpassword
