@@ -1,6 +1,15 @@
 @import "../_01-settings/variables";
 @import "../_02-tools/mixin";
 
+.card-container {
+  background-color: rgba(255, 0, 0, 0);
+  height: 60vh;
+}
+
+
+.container {
+  background-color: rgba(0, 128, 0, 0);
+}
 /* Este es el contenedor que hará todo el trabajo */
 .table-wrapper {
   max-height: 60vh;
@@ -9,6 +18,8 @@
   /* Activa el scroll VERTICAL cuando el contenido es muy alto */
   overflow-x: auto;
   /* Activa el scroll HORIZONTAL siempre (o cuando sea necesario) */
+
+  background-color: rgb(255, 255, 255);
 }
 
 /* El encabezado se pega al borde superior DEL CONTENEDOR .table-wrapper */
@@ -25,7 +36,7 @@
 }
 
 /* Forzar ancho de la tabla en pantallas chicas */
-@media (max-width: 750px) {
+@include media ('md') {
   .table-wrapper>.table {
     min-width: 900px;
   }
